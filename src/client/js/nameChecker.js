@@ -12,3 +12,5 @@ function checkForName(inputText) {
         alert("Welcome, Captain!")
     }
 }
+
+module.exports = {checkForName}
