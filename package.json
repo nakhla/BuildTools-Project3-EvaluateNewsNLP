@@ -21,6 +21,8 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^4.5.2",
     "nodemon": "^2.0.15",
     "webpack-dev-server": "^4.6.0"
   }
