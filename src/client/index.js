@@ -8,3 +8,9 @@ import "./styles/footer.scss";
 import "./styles/form.scss";
 import "./styles/header.scss";
 
+function main() {
+    const NLPformElement = document.getElementById('NLPform')
+    NLPformElement.addEventListener('submit', handleSubmit)
+}
+
+main()
