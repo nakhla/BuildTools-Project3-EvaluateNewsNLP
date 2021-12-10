@@ -1,5 +1,10 @@
 import {checkForName} from './nameChecker'
 
+let url = "/test";
+if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:8085/test";
+}
+
 export function handleSubmit(event) {
     event.preventDefault()
 
@@ -8,10 +13,14 @@ export function handleSubmit(event) {
     checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+        },
+        body: JSON.stringify({ articleUrl: formText }) 
     })
+    .then((raw) => raw.json())
+    .then((response) => console.log({response}));
 }
 

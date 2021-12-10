@@ -8,5 +8,13 @@ module.exports = merge(common, {
     devtool: 'source-map',
     devServer: {
         port
+    },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            }
+        ]
     }
 })
