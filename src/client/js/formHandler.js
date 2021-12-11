@@ -1,4 +1,4 @@
-import {checkForName} from './nameChecker'
+import {validURL} from './urlChecker'
 
 let url = "/test";
 if (process.env.NODE_ENV === "development") {
@@ -8,11 +8,13 @@ if (process.env.NODE_ENV === "development") {
 export function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+    // check if text is valid url format
+    let formText = document.getElementById('url').value
+    if (validURL(formText)){
+
 
     console.log("::: Form Submitted :::")
+    
     fetch(url, {
         method: "POST",
         headers: {
@@ -21,6 +23,14 @@ export function handleSubmit(event) {
         body: JSON.stringify({ articleUrl: formText }) 
     })
     .then((raw) => raw.json())
-    .then((response) => console.log({response}));
-}
+    .then((response) => {
+    document.getElementById('agreement').innerHTML = "Agreement: " + response.agreement;
+    document.getElementById('confidence').innerHTML = "Confidence: " + response.confidence;
+    document.getElementById('irony').innerHTML = "Irony: " + response.irony;
+    document.getElementById('subjectivity').innerHTML = "subjectivity: " + response.subjectivity;
+    document.getElementById('score_tag').innerHTML = "Score Tag: " + response.score_tag;
+});
 
+}else
+alert('Please Enter valid url')
+}

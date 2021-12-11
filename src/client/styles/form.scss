@@ -1,5 +1,7 @@
+$formColor: #545454;
+
 form {
-    border: 1px solid #545454;
+    border: 1px solid $formColor;
     border-radius: 3px;
     padding: 40px;
 }

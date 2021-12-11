@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const WorkBoxPlugin = require('workbox-webpack-plugin')
 
 module.exports = merge(common, {
     mode: 'production',
@@ -26,6 +27,7 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
             filename: '[name].css'
-        })
+        }),
+        new WorkBoxPlugin.GenerateSW()
     ]
 })
